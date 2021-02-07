@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+ <html lang="en">
+
+<head>
+     <meta charset="UTF-8" />
+    <title>Login </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+    
+    
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/plugins/magic/magic.css" />
+    <!-- <link rel="stylesheet" href="/img1.jpg"/> -->
+    <style>
+        body{
+            background-image: url("/img1.jpg");
+
+        }
+    </style>
+    
+</head>
+    
+<body >
+<div class="container">
+    <div class="text-center">
+        <!-- <img src="assets/img/logo.png" id="logoimg" alt=" Logo" /> -->
+    </div>
+    <div class="tab-content">
+        <div id="login" class="tab-pane active">
+            <form action="/student/login" method="POST" class="form-signin">
+                <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+                    Enter your username and password
+                </p>
+                <input type="email"  required name="userEmail" placeholder="Username" class="form-control" />
+                <input type="password" required name="userPassword" placeholder="Password" class="form-control" />
+                <button class="btn text-muted text-center btn-danger" type="submit">Sign in</button>
+                <a class="btn text-muted text-center btn-success" href="/student/registration">Register</a>
+        
+            </form>
+        </div>
+             </div>
+        
+    </div>
+        
+
+</div>
+
+	  <!--END PAGE CONTENT -->     
+	      
+      <!-- PAGE LEVEL SCRIPTS -->
+      <script src="/plugins/jquery-2.0.3.min.js"></script>
+      <script src="/plugins/bootstrap/js/bootstrap.js"></script>
+   <script src="/js/login.js"></script>
+      <!--END PAGE LEVEL SCRIPTS -->
+
+</body>
+    <!-- END BODY -->
+</html>

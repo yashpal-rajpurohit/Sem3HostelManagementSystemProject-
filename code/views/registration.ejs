@@ -1,0 +1,209 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title> Add Student</title> 
+     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.css" />
+     <link rel="stylesheet" href="/css/main.css" />
+     <link rel="stylesheet" href="/css/theme.css" />
+     <link rel="stylesheet" href="/css/MoneAdmin.css" />
+     <link rel="stylesheet" href="/plugins/Font-Awesome/css/font-awesome.css" />
+     <!--END GLOBAL STYLES -->
+     <link href="/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+     <link rel="stylesheet" href="/plugins/validationengine/css/validationEngine.jquery.css" />
+     <link rel="stylesheet" href="/regi.css" />
+ 
+ 
+    </head> 
+<body> 
+    <div class="row">
+        <div class="col-lg-8">
+     
+        <form action="/student/registration" class = "form-horizontal" method="post" id="popup-validation"> 
+                      
+            <h1> Add Student </h1> 
+                
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student First Name</label>
+                <div class="col-lg-4">
+                    <input type="text" class="validate[required] form-control" name="userfname" id="userfname">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student Middle Name</label>
+                <div class="col-lg-4">
+                    <input type="text" name="usermname" class="validate[required] form-control"/>
+            
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student Last Name</label>
+                <div class="col-lg-4">
+                    <input type="text" name="userlname" class="validate[required] form-control"/> 
+            
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student E-mail</label>
+
+                <div class=" col-lg-4">
+                    <input class="validate[required,custom[email]] form-control" type="text" name="useremail"
+                        id="useremail" />
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student Roll no</label>
+
+                <div class=" col-lg-4">
+                    <input class="validate[required] form-control" type="number" min="1" 
+                        name="userrollno" id="userrollno" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student DOB</label>
+
+                <div class=" col-lg-4">
+                    <input class="validate[required,custom[date],past[2000/01/1]] form-control"
+                        type="date" name="userdob" id="userdob" />
+            <!-- <span class="help-block">Please enter a date ealier than 2012/09/13</span> -->
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student's Father Name</label>
+
+                <div class=" col-lg-4">
+                    <input class="validate[required] form-control" type="text" 
+                        name="userfathername" id="userfathername" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student's Mother Name</label>
+
+                <div class=" col-lg-4">
+                    <input class="validate[required] form-control" type="text" 
+                        name="usermothername" id="usermothername" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4" >Student's Address</label>
+                <div class=" col-lg-4">
+                <textarea style="resize:none" class="validate[required] form-control"  rows="4" name="useraddress" id="useraddress"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student's Gender</label>
+                </hr>
+                <label class="radio-inline">
+                    <input type="radio" name="usergender" id="male" value="M"
+                      checked />MALE
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="usergender" value="F" id="female"/>FEMALE 
+                </label>
+             </div>
+
+             <div class="form-group">
+                <label class="control-label col-lg-4">Password</label>
+
+                <div class=" col-lg-4">
+                    <input class="validate[required,minSize[8]] form-control" type="password" name="userpassword" id="userpassword" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4">Confirm Password</label>
+
+                <div class=" col-lg-4">
+                    <input class="validate[required,minSize[8],equals[userpassword]] form-control" type="password" name="pass2"
+                        id="pass2" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student Course</label>
+                <div class=" col-lg-4">
+              
+                <select class="form-control" name="usercourseid">
+                    <% if(courses.length > 0) { %>
+                        <% for (let course of courses) { %>
+                            <option value="<%=course.course_id%>"><%=course.course_name%></option>
+                        <% }  } 
+                        else { %>
+                            <option value="0"> No Course Found</option>
+                        <% } %>
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student's City</label>
+                <div class=" col-lg-4">
+              
+                <select class="form-control" name="usercityid">
+                    <% if(cities.length > 0) { %>
+                        <% for (let city of cities) { %>
+                            <option value="<%=city.city_id%>"><%=city.city_name%></option>
+                        <% }  } 
+                        else { %>
+                            <option value="0"> No City Found</option>
+                        <% } %>
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-lg-4">Student's Phone Number</label>
+
+                <div class=" col-lg-4">
+                    <input  class="validate[required,minSize[10],maxSize[10]] form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text" name="usercontactno"
+                        id="usercontactno" />
+                </div>
+            
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-lg-4"> Parent's Phone Number</label>
+
+                <div class=" col-lg-4">
+                    <input  class="validate[required,minSize[10],maxSize[10]] form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" type="text" name="userparentsno"
+                        id="userparentsno" />
+                </div>
+            </div>
+            <center>
+            <button class="btn text-muted text-center btn-success" type="submit">Register</button>
+                <a class="btn text-muted text-center btn-danger" href="/student/login">Go To Login</a>
+            </center>
+        </form> 
+        </div>
+        </div>
+        <ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+</body>
+
+<script src="/plugins/jquery-2.0.3.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<!-- END GLOBAL SCRIPTS -->
+
+<!-- PAGE LEVEL SCRIPTS -->
+
+<script src="/plugins/validationengine/js/jquery.validationEngine.js"></script>
+<script src="/plugins/validationengine/js/languages/jquery.validationEngine-en.js"></script>
+<script src="/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
+<script src="/js/validationInit.js"></script>
+<script>
+   $(function () { formValidation(); });
+   </script>
+<!--END PAGE LEVEL SCRIPTS -->
+
+</html>
